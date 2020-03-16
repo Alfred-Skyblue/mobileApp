@@ -1,18 +1,39 @@
+'use strict'
+
 module.exports = {
-  root: true,
+  // https://github.com/eslint/eslint/issues/11888
+  root: false,
+  parserOptions: {
+    ecmaVersion: 6
+  },
   env: {
-    node: true
+    node: true,
+    mocha: true
   },
   extends: [
-    'plugin:vue/essential',
-    '@vue/standard'
+    'plugin:eslint-plugin/recommended',
+    'plugin:vue-libs/recommended'
   ],
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
+  plugins: [
+    'eslint-plugin'
+  ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    "linebreak-style": [0, "error", "windows"]
-  }
+    'eslint-plugin/report-message-format': ['error', '^[A-Z`\'{].*\\.$'],
+    'eslint-plugin/prefer-placeholders': 'error',
+    'eslint-plugin/consistent-output': 'error',
+    'no-mixed-operators': 'error'
+  },
+
+  overrides: [{
+    files: ['lib/rules/*.js'],
+    rules: {
+      "consistent-docs-description": "error",
+      "no-invalid-meta": "error",
+      "no-invalid-meta-docs-categories": "error",
+      'eslint-plugin/require-meta-type': 'error',
+      "require-meta-docs-url": ["error", {
+        "pattern": `https://eslint.vuejs.org/rules/{{name}}.html`
+      }]
+    }
+  }]
 }

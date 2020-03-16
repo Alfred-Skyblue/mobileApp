@@ -11,27 +11,27 @@ export default {
     title: {
       type: String,
       default() {
-        return "";
+        return ''
       }
     },
     cname: {
       type: String,
       default() {
-        return "";
+        return ''
       }
     }
   },
   data() {
     return {
-      panelClass: "panel"
-    };
+      panelClass: 'panel'
+    }
   }
-};
+}
 </script>
 
-<style lang="scss">
-@import "../../css/element.scss";
-.panel{
-	@include panel;
+<style lang="scss" scoped>
+@import '../../css/element.scss';
+.panel {
+  @include panel;
 }
 </style>

@@ -3,10 +3,14 @@
     <swiper :options="options" :not-next-tick="options.notNextTick">
       <swiper-slide v-for="item in items" :key="item.href">
         <router-link to="{name:item.href}">
-          <img src="" alt="" />
+          <img :src="item.src" alt="" />
         </router-link>
       </swiper-slide>
-      <div class="swiper-pagination" v-if="options.pagination"></div>
+      <div
+        class="swiper-pagination"
+        v-if="options.pagination"
+        slot="pagination"
+      ></div>
     </swiper>
   </section>
 </template>
@@ -27,12 +31,12 @@ export default {
           },
           notNextTick: false
         }
-      },
-      items: {
-        type: Array,
-        default() {
-          return []
-        }
+      }
+    },
+    items: {
+      type: Array,
+      default() {
+        return []
       }
     },
     cname: {
